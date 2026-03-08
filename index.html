@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة ليلة العمر</title>
+    <style>
+        /* التنسيق الملكي */
+        body {
+            margin: 0;
+            background: #000;
+            color: #d4af37; /* اللون الذهبي */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* شاشة التحميل */
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
+        }
+
+        .container {
+            border: 2px solid #d4af37;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            width: 85%;
+            max-width: 400px;
+        }
+
+        h1 { margin: 20px 0; font-size: 2em; border-bottom: 1px solid #d4af37; padding-bottom: 10px; }
+        .info { color: #fff; font-size: 1.5em; margin-bottom: 10px; }
+        #timer { font-size: 1.2em; background: #d4af37; color: #000; padding: 10px; border-radius: 10px; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <h1>جاري التحميل...</h1>
+    </div>
+
+    <div class="container">
+        <h1>ليلة العمر</h1>
+
+<div class="info">
+            <strong>المكان:</strong>
+           <img src="Screenshot 2026-03-08 222423.png" alt="">
+        </div>
+        
+        <div class="info">
+            <strong>المكان:</strong>
+            <p>قاعة الجوهرة - كينج مريوط</p>
+        </div>
+
+        <div class="info">
+            <strong>الوقت:</strong>
+            <p>الساعة 8:00 مساءً</p>
+        </div>
+
+        <div class="info">
+            <strong>اليوم:</strong>
+            <p>الجمعة، 20 مايو 2026</p>
+        </div>
+
+        <div id="timer">جارِ حساب الوقت...</div>
+    </div>
+
+    <script>
+        // إخفاء شاشة التحميل
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 1000);
+        };
+
+        // العداد التنازلي
+        const weddingDate = new Date("May 20, 2026 20:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("timer").innerHTML = `باقي على الفرح: ${days} يوم و ${hours} ساعة`;
+        }, 1000);
+    </script>
+</body>
+</html>
